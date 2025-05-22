@@ -1,0 +1,6 @@
+Simple clone of a video streaming service
+
+HOW TO RUN:
+1) run model.py as the main script to create the tables
+2) run data.py as the main script after step 1 to populate the table with data
+3) run app.py to run the web server
