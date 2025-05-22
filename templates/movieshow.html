@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-container" style="height: 100vh;)">
+    {% for show in movieshow %}
+    {% if show.genre_id == 1 %}
+    <img src='../static/images/scary.jpg'>
+    {% elif show.genre_id == 2 %}
+    <img src='../static/images/adventure.jpg'>
+    {% else %}
+    <img src='../static/images/comedy.jpg'>
+    {% endif %}
+    <a href="{{url_for('webcontroller .play') }}" class="btn btn-primary btn-lg active" role="button">Play</a>
+    <h1> Title </h1>
+    <h5> {{show.title}}</h5>
+
+    <h1> Description </h1>
+    <h5> {{show.description}} </h5>
+
+    <h1> Release Date</h1>
+    <h5> {{show.release_date}}</h5>
+
+    <h1>Duration</h1>
+    <h5>{{show.duration}} minutes</h5>
+    {% if favored %}
+    <a href="{{url_for('webcontroller .removefav', movieshowid=show.id) }}" class="btn btn-primary btn-lg active" role="button">Remove from favorites</a>
+    {% else %}
+    <a href="{{url_for('webcontroller .addfav', movieshowid=show.id) }}" class="btn btn-primary btn-lg active" role="button">Add to favorites</a>
+    {% endif %}
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-container" style="height: 100vh;)">
+<h1> Browse</h1>
+      <div class="row">
+      {% for show in catalog %}
+         <div class="column">
+            {% if show.genre_id == 1 %}
+               <img src='../static/images/scary.jpg'>
+            {% elif show.genre_id == 2 %}
+               <img src='../static/images/adventure.jpg'>
+            {% else %}
+               <img src='../static/images/comedy.jpg'>
+            {% endif %}
+            <a href = "{{url_for('webcontroller .movieshow', movieshowid=show.id) }}">{{show.title}}</a>
+         </div>
+      {% endfor %}
+      </div>
+
+</div>
+<style>
+        .column {
+            float: left;
+            width: 30%;
+
+        }
+
+        img {
+            width: 80%;
+            display: block;
+        }
+</style>
+{% endblock %}
